@@ -104,4 +104,4 @@ async def load(ctx, *, msg):
     else:
         await ctx.send('Loaded module: `{}.py`'.format(msg))
 
-bot.run(TOKEN)
+bot.run('INSERT_BOT_TOKEN_HERE')
