@@ -1,0 +1,8 @@
+# PYCACHE
+src/bot/__pycache__/
+src/bot/utils/__pycache__/
+src/bot/cogs/__pycache__/
+src/bot/cogs/utils/__pycache__/
+
+#IDE
+.idea
