@@ -24,7 +24,11 @@ class Public(commands.Cog, name='Ranks'):
 
     @commands.command(name='bot', aliases=['info', 'botinfo'])
     async def _bot(self, ctx):
-        embed = discord.Embed(title='Bot Information', description='Created by Jared#5984', color=0xff003d)
+        embed = discord.Embed(
+            title='Bot Information',
+            description='Created by Jared#5984 and edited by waifujack#0218',
+            color=0xff003d
+        )
 
         embed.set_thumbnail(url='https://images-ext-2.discordapp.net/external/gf8sjTwr0DCWMKpYuNd8yXlzvywht43aRWh6QjnMPw0/%3Fsize%3D128/https/cdn.discordapp.com/avatars/648362865048420373/bf8b2c1ed038e8d19f8863db3fba526c.png')
         embed.set_footer(text='Leveling', icon_url='https://images-ext-2.discordapp.net/external/gf8sjTwr0DCWMKpYuNd8yXlzvywht43aRWh6QjnMPw0/%3Fsize%3D128/https/cdn.discordapp.com/avatars/648362865048420373/bf8b2c1ed038e8d19f8863db3fba526c.png')
@@ -48,7 +52,10 @@ class Public(commands.Cog, name='Ranks'):
     
     @commands.command(name='help')
     async def _help(self, ctx):
-        embed = discord.Embed(title="Bot Help", description="Created by Jared#5984", color=0xff003d)
+        embed = discord.Embed(
+            title="Bot Help",
+            description='Created by Jared#5984 and edited by waifujack#0218',
+            color=0xff003d)
 
         embed.set_footer(text='Leveling', icon_url='https://images-ext-2.discordapp.net/external/gf8sjTwr0DCWMKpYuNd8yXlzvywht43aRWh6QjnMPw0/%3Fsize%3D128/https/cdn.discordapp.com/avatars/648362865048420373/bf8b2c1ed038e8d19f8863db3fba526c.png')
         embed.timestamp = datetime.datetime.utcnow()
