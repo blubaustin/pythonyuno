@@ -1,6 +1,6 @@
 import discord
-from discord.ext import commands
 import sqlite3
+from discord.ext import commands
 
 async def check_permissions(ctx, perms, *, check=all):
     is_owner = await ctx.bot.is_owner(ctx.author)
