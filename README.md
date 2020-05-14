@@ -16,4 +16,11 @@ but yet he wouldn't just finish it. So best we can do is just add to the code an
 Remember this bot is under the AGPL so you need to publish your source/changed. Easiest way is to for the bot and just publish
 on your own git.
 
+Todo::
+* XP system(VC done)
+* Assignable Ban Images
+* Ban via ID/name
+* REGEX spam filter ported to python
+* Assignable welcome message /w mention of commands
+
 Project continued by: *[@mathleite](https://github.com/mathleite)*
