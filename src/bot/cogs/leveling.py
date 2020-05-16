@@ -1,15 +1,15 @@
 import discord
-from discord.ext import commands
 import datetime
 import sqlite3
 import math
 import random
+import aiohttp
+from io import BytesIO
+from discord.ext import commands
+from .utils import checks
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
-from io import BytesIO
-import aiohttp
-from .utils import checks
 
 
 class Ranks(commands.Cog, name='Ranks'):
