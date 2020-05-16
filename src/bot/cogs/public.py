@@ -1,21 +1,21 @@
-import discord
+from .utils import checks
 from discord.ext import commands
+from io import BytesIO
+from collections import OrderedDict, deque, Counter
+from PIL import Image
+from PIL import ImageFont
+from PIL import ImageDraw
+import discord
 import asyncio
 import datetime
 import sqlite3
 import os
 import time
-from collections import OrderedDict, deque, Counter
 import math
 import random
-from PIL import Image
-from PIL import ImageFont
-from PIL import ImageDraw
 import io
-from io import BytesIO
 import requests
 import aiohttp
-from .utils import checks
 
 
 class Public(commands.Cog, name='Ranks'):
