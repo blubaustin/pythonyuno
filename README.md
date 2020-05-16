@@ -21,6 +21,7 @@ Todo::
 * Assignable Ban Images
 * Ban via ID/name
 * REGEX spam filter ported to python
+* Source command to comply with AGPL that links to the github
 * Assignable welcome message /w mention of commands
 
 Project continued by: *[@mathleite](https://github.com/mathleite)*
