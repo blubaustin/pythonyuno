@@ -199,8 +199,6 @@ class TextLeveling(commands.Cog, name='Leveling'):
 
         embed = discord.Embed(color=0x555555)
         embed.add_field(name='Commands Module', value=info)
-        embed.set_footer(text='Made by Jared#5984', icon_url=self.bot.user.avatar_url)
-        embed.set_author(name='Garbage Commands Module', icon_url=self.bot.user.avatar_url)
         embed.timestamp = datetime.datetime.utcnow()
         await ctx.send(embed=embed)
     
