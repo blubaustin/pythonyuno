@@ -1,23 +1,23 @@
-import discord
+from .utils import checks
 from discord.ext import commands
+from io import BytesIO
+from collections import OrderedDict, deque, Counter
+from PIL import Image
+from PIL import ImageFont
+from PIL import ImageDraw
+import discord
 import asyncio
 import datetime
 import sqlite3
 import os
 import time
-from collections import OrderedDict, deque, Counter
 import math
 import random
-from PIL import Image
-from PIL import ImageFont
-from PIL import ImageDraw
 import io
-from io import BytesIO
 import requests
 import aiohttp
-from .utils import checks
 
-
+## class provides(_bot, invite, _help)
 class Public(commands.Cog, name='Ranks'):
     def __init__(self, bot):
         self.bot = bot
@@ -29,7 +29,8 @@ class Public(commands.Cog, name='Ranks'):
             description='Created by Jared#5984 and edited by waifujack#0218',
             color=0xff003d
         )
-
+        
+        #these long urls should really be shortened....
         embed.set_thumbnail(url='https://images-ext-2.discordapp.net/external/gf8sjTwr0DCWMKpYuNd8yXlzvywht43aRWh6QjnMPw0/%3Fsize%3D128/https/cdn.discordapp.com/avatars/648362865048420373/bf8b2c1ed038e8d19f8863db3fba526c.png')
         embed.set_footer(text='Leveling', icon_url='https://images-ext-2.discordapp.net/external/gf8sjTwr0DCWMKpYuNd8yXlzvywht43aRWh6QjnMPw0/%3Fsize%3D128/https/cdn.discordapp.com/avatars/648362865048420373/bf8b2c1ed038e8d19f8863db3fba526c.png')
 
@@ -43,6 +44,7 @@ class Public(commands.Cog, name='Ranks'):
         embed.timestamp = datetime.datetime.utcnow()
         await ctx.send(embed=embed)
     
+    #shorten these urls too... maybe something like tinyurl- but long-term?
     @commands.command()
     async def invite(self, ctx):
         embed = discord.Embed(title='Invite the bot!', description='[Click Here!](https://discordapp.com/api/oauth2/authorize?client_id=648362865048420373&permissions=8&scope=bot)', color=0xff003d)
@@ -57,6 +59,7 @@ class Public(commands.Cog, name='Ranks'):
             description='Created by Jared#5984 and edited by waifujack#0218',
             color=0xff003d)
 
+        #shorten url here...
         embed.set_footer(text='Leveling', icon_url='https://images-ext-2.discordapp.net/external/gf8sjTwr0DCWMKpYuNd8yXlzvywht43aRWh6QjnMPw0/%3Fsize%3D128/https/cdn.discordapp.com/avatars/648362865048420373/bf8b2c1ed038e8d19f8863db3fba526c.png')
         embed.timestamp = datetime.datetime.utcnow()
         embed.add_field(name="**Ranks**", value="`?ranks` - Shows info for ranks commands\n`?ranks add` - Adds rank\n`?ranks remove` - Removes rank\n`?ranks list` - Lists all current ranks")

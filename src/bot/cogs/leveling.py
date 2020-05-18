@@ -1,17 +1,17 @@
 import discord
-from discord.ext import commands
 import datetime
 import sqlite3
 import math
 import random
+import aiohttp
+from io import BytesIO
+from discord.ext import commands
+from .utils import checks
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
-from io import BytesIO
-import aiohttp
-from .utils import checks
 
-
+##has controls for admins(ranks, remove, add, list)
 class Ranks(commands.Cog, name='Ranks'):
     def __init__(self, bot):
         self.bot = bot
@@ -80,7 +80,7 @@ class Ranks(commands.Cog, name='Ranks'):
             ranks += f'{role.name} - {str(result[1])}\n'
         await ctx.send(ranks)
 
-
+##this class has the defs(ranking, member_join, message, leveling, enable, disable, rank, leaderboard)
 class TextLeveling(commands.Cog, name='Leveling'):
 
     def __init__(self, bot):
@@ -260,13 +260,13 @@ class TextLeveling(commands.Cog, name='Leveling'):
                 draw = ImageDraw.Draw(img)
                 font = ImageFont.truetype("Leveling/Quotable.otf", 35) #Make sure you insert a valid font from your folder.
                 font1 = ImageFont.truetype("Leveling/Quotable.otf", 24) #Make sure you insert a valid font from your folder.
-                #    (x,y)::↓ ↓ ↓ (text)::↓ ↓     (r,g,b)::↓ ↓ ↓
                 async with aiohttp.ClientSession() as session:
                     async with session.get(str(ctx.author.avatar_url)) as response:
                         image = await response.read()
                 icon = Image.open(BytesIO(image)).convert("RGBA")
                 img.paste(icon.resize((156, 156)), (50, 60))
 
+                #    (x,y)::↓ ↓ ↓ (text)::↓ ↓     (r,g,b)::↓ ↓ ↓
                 draw.text((242, 100), "0", (255, 255, 255), font=font)
                 draw.text((242, 180), "0", (255, 255, 255), font=font)
                 draw.text((50,220), f"{ctx.author.name}", (255, 255, 255), font=font1)
@@ -279,13 +279,13 @@ class TextLeveling(commands.Cog, name='Leveling'):
                 draw = ImageDraw.Draw(img)
                 font = ImageFont.truetype("Leveling/Quotable.otf", 35) #Make sure you insert a valid font from your folder.
                 font1 = ImageFont.truetype("Leveling/Quotable.otf", 24) #Make sure you insert a valid font from your folder.
-                #    (x,y)::↓ ↓ ↓ (text)::↓ ↓     (r,g,b)::↓ ↓ ↓
                 async with aiohttp.ClientSession() as session:
                     async with session.get(str(ctx.author.avatar_url)) as response:
                         image = await response.read()
                 icon = Image.open(BytesIO(image)).convert("RGBA")
                 img.paste(icon.resize((156, 156)), (50, 60))
 
+                #    (x,y)::↓ ↓ ↓ (text)::↓ ↓     (r,g,b)::↓ ↓ ↓
                 draw.text((242, 100), f"{str(result[1])}", (255, 255, 255), font=font)
                 draw.text((242, 180), f"{str(result[0])}", (255, 255, 255), font=font)
                 draw.text((50,220), f"{ctx.author.name}", (255, 255, 255), font=font1)
@@ -305,13 +305,13 @@ class TextLeveling(commands.Cog, name='Leveling'):
                 draw = ImageDraw.Draw(img)
                 font = ImageFont.truetype("Leveling/Quotable.otf", 35) #Make sure you insert a valid font from your folder.
                 font1 = ImageFont.truetype("Leveling/Quotable.otf", 24) #Make sure you insert a valid font from your folder.
-                #    (x,y)::↓ ↓ ↓ (text)::↓ ↓     (r,g,b)::↓ ↓ ↓
                 async with aiohttp.ClientSession() as session:
                     async with session.get(str(user.avatar_url)) as response:
                         image = await response.read()
                 icon = Image.open(BytesIO(image)).convert("RGBA")
                 img.paste(icon.resize((156, 156)), (50, 60))
 
+                #    (x,y)::↓ ↓ ↓ (text)::↓ ↓     (r,g,b)::↓ ↓ ↓
                 draw.text((242, 100), "0", (255, 255, 255), font=font)
                 draw.text((242, 180), "0", (255, 255, 255), font=font)
                 draw.text((50,220), f"{user.name}", (255, 255, 255), font=font1)
@@ -324,13 +324,13 @@ class TextLeveling(commands.Cog, name='Leveling'):
                 draw = ImageDraw.Draw(img)
                 font = ImageFont.truetype("Leveling/Quotable.otf", 35) #Make sure you insert a valid font from your folder.
                 font1 = ImageFont.truetype("Leveling/Quotable.otf", 24) #Make sure you insert a valid font from your folder.
-                #    (x,y)::↓ ↓ ↓ (text)::↓ ↓     (r,g,b)::↓ ↓ ↓
                 async with aiohttp.ClientSession() as session:
                     async with session.get(str(user.avatar_url)) as response:
                         image = await response.read()
                 icon = Image.open(BytesIO(image)).convert("RGBA")
                 img.paste(icon.resize((156, 156)), (50, 60))
 
+                #    (x,y)::↓ ↓ ↓ (text)::↓ ↓     (r,g,b)::↓ ↓ ↓
                 draw.text((242, 100), f"{str(result[1])}", (255, 255, 255), font=font)
                 draw.text((242, 180), f"{str(result[0])}", (255, 255, 255), font=font)
                 draw.text((50,220), f"{user.name}", (255, 255, 255), font=font1)
@@ -341,6 +341,7 @@ class TextLeveling(commands.Cog, name='Leveling'):
             cursor.close()
             main.close()
 
+    ##this pulls up the leaderboard
     @commands.command(pass_context=True)
     async def leaderboard(self, ctx):
         main = sqlite3.connect('Leveling/main.db')
@@ -368,6 +369,7 @@ class TextLeveling(commands.Cog, name='Leveling'):
         embed.timestamp = datetime.datetime.utcnow()
         await ctx.send(embed=embed)
 
+## this class has 3 main functionalities(Start-time, Stop, and update-level)
 class VoiceLeveling(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
