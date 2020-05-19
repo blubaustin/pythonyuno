@@ -362,7 +362,7 @@ class TextLeveling(commands.Cog, name='Leveling'):
             
         embed = discord.Embed(color=0xff003d)
         embed.add_field(name='**Leaderboard Top 5**', value=desc)
-        embed.set_thumbnail(url='https://images-ext-2.discordapp.net/external/gf8sjTwr0DCWMKpYuNd8yXlzvywht43aRWh6QjnMPw0/%3Fsize%3D128/https/cdn.discordapp.com/avatars/648362865048420373/bf8b2c1ed038e8d19f8863db3fba526c.png')
+        embed.set_thumbnail(url='https://tinyurl.com/y9ms7ps9')
         embed.set_footer(text=f'{ctx.message.guild}')
         embed.timestamp = datetime.datetime.utcnow()
         await ctx.send(embed=embed)
