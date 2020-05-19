@@ -31,8 +31,8 @@ class Public(commands.Cog, name='Ranks'):
         )
         
         #these long urls should really be shortened....
-        embed.set_thumbnail(url='https://images-ext-2.discordapp.net/external/gf8sjTwr0DCWMKpYuNd8yXlzvywht43aRWh6QjnMPw0/%3Fsize%3D128/https/cdn.discordapp.com/avatars/648362865048420373/bf8b2c1ed038e8d19f8863db3fba526c.png')
-        embed.set_footer(text='Leveling', icon_url='https://images-ext-2.discordapp.net/external/gf8sjTwr0DCWMKpYuNd8yXlzvywht43aRWh6QjnMPw0/%3Fsize%3D128/https/cdn.discordapp.com/avatars/648362865048420373/bf8b2c1ed038e8d19f8863db3fba526c.png')
+        embed.set_thumbnail(url='https://tinyurl.com/y9ms7ps9')
+        embed.set_footer(text='Leveling', icon_url='https://tinyurl.com/y9ms7ps9')
 
         embed.add_field(name='**Total Guilds**', value=f'`{len(list(self.bot.guilds))}`', inline=True)
         embed.add_field(name='**Total Users**', value=f'`{len(list(self.bot.users))}`', inline=True)
@@ -47,8 +47,8 @@ class Public(commands.Cog, name='Ranks'):
     #shorten these urls too... maybe something like tinyurl- but long-term?
     @commands.command()
     async def invite(self, ctx):
-        embed = discord.Embed(title='Invite the bot!', description='[Click Here!](https://discordapp.com/api/oauth2/authorize?client_id=648362865048420373&permissions=8&scope=bot)', color=0xff003d)
-        embed.set_footer(text='Leveling', icon_url='https://images-ext-2.discordapp.net/external/gf8sjTwr0DCWMKpYuNd8yXlzvywht43aRWh6QjnMPw0/%3Fsize%3D128/https/cdn.discordapp.com/avatars/648362865048420373/bf8b2c1ed038e8d19f8863db3fba526c.png')
+        embed = discord.Embed(title='Invite the bot!', description='[Click Here!](https://tinyurl.com/ybl9sp2w)', color=0xff003d)
+        embed.set_footer(text='Leveling', icon_url='https://tinyurl.com/y9ms7ps9')
         embed.timestamp = datetime.datetime.utcnow()
         await ctx.send(embed=embed)
     
@@ -60,7 +60,7 @@ class Public(commands.Cog, name='Ranks'):
             color=0xff003d)
 
         #shorten url here...
-        embed.set_footer(text='Leveling', icon_url='https://images-ext-2.discordapp.net/external/gf8sjTwr0DCWMKpYuNd8yXlzvywht43aRWh6QjnMPw0/%3Fsize%3D128/https/cdn.discordapp.com/avatars/648362865048420373/bf8b2c1ed038e8d19f8863db3fba526c.png')
+        embed.set_footer(text='Leveling', icon_url='https://tinyurl.com/y9ms7ps9')
         embed.timestamp = datetime.datetime.utcnow()
         embed.add_field(name="**Ranks**", value="`?ranks` - Shows info for ranks commands\n`?ranks add` - Adds rank\n`?ranks remove` - Removes rank\n`?ranks list` - Lists all current ranks")
         embed.add_field(name="**Leveling**", value="`?leveling` - Shows info for leveling commands\n`?leveling enable` - Enables leveling (enabled by default)\n`?leveling disable` - Disables leveling")
