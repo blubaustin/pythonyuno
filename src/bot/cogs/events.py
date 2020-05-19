@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands, tasks
 from src.bot.utils.message_handler import MessageHandler
 
+##class provides (on_ready, on_message)
 class Events(commands.Cog):
 	def __init__(self, client):
 		self._client = client

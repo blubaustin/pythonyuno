@@ -2,6 +2,7 @@ import discord
 import sqlite3
 from discord.ext import commands
 
+#check user permissions, return T/F
 async def check_permissions(ctx, perms, *, check=all):
     is_owner = await ctx.bot.is_owner(ctx.author)
     if is_owner:
@@ -10,13 +11,16 @@ async def check_permissions(ctx, perms, *, check=all):
     resolved = ctx.channel.permissions_for(ctx.author)
     return check(getattr(resolved, name, None) == value for name, value in perms.items())
 
+#check what permissions
 def has_permissions(*, check=all, **perms):
     async def pred(ctx):
         return await check_permissions(ctx, perms, check=check)
     return commands.check(pred)
 
+#check channel permission, return T/F
 async def check_guild_permissions(ctx, perms, *, check=all):
     is_owner = await ctx.bot.is_owner(ctx.author)
+
     if is_owner:
         return True
 
@@ -26,13 +30,14 @@ async def check_guild_permissions(ctx, perms, *, check=all):
     resolved = ctx.author.guild_permissions
     return check(getattr(resolved, name, None) == value for name, value in perms.items())
 
+#check channel permission, return values
 def has_guild_permissions(*, check=all, **perms):
     async def pred(ctx):
         return await check_guild_permissions(ctx, perms, check=check)
     return commands.check(pred)
 
-# These do not take channel overrides into account
-
+## !!These do not take channel overrides into account!! ##
+##                  ##################                  ##
 def is_mod():
     async def pred(ctx):
         return await check_guild_permissions(ctx, {'manage_messages': True})
@@ -55,6 +60,7 @@ def admin_or_permissions(**perms):
         return await check_guild_permissions(ctx, perms, check=any)
     return commands.check(predicate)
 
+#is in channel
 def is_in_guilds(*guild_ids):
     def predicate(ctx):
         guild = ctx.guild
@@ -66,6 +72,7 @@ def is_in_guilds(*guild_ids):
 def is_lounge_cpp():
     return is_in_guilds(466079331152822273)
 
+#is an admin
 def has_admin_role():
     async def predicate(ctx):
         db = sqlite3.connect('main.sqlite')
@@ -80,6 +87,7 @@ def has_admin_role():
             return role in ctx.author.roles or await check_guild_permissions(ctx, {'administrator': True})
     return commands.check(predicate)
 
+#is a mod
 def has_mod_role():
     async def predicate(ctx):
         db = sqlite3.connect('main.sqlite')

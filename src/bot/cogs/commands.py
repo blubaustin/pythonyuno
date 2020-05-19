@@ -1,11 +1,14 @@
 import discord
 from discord.ext import commands
 
+        ##Commands listed below so far: clear, ping, kick, ban, unban
+        ####Commands needed: cookie, (and maybe a command to add commands?)
+
 class Commands(commands.Cog):
 	def __init__(self, client):
 		self._client = client
-
-	@commands.command()
+        
+        @commands.command()
 	@commands.has_permissions(manage_messages=True)
 	async def clear(self, context, amount=1000):
 		await context.channel.purge(limit=amount)
@@ -18,12 +21,12 @@ class Commands(commands.Cog):
 	async def kick(self, context, member: discord.Member, *, reason=None):
 		await member.kick(reason=reason)
 		await context.send(f'Kicked {member.mention}')
-
+        
 	@commands.command()
 	async def ban(self, context, member: discord.Member, *, reason=None):
 		await member.ban(reason=reason)
 		await context.send(f'Banned {member.mention}')
-
+        
 	@commands.command()
 	async def unban(self, context, *, member):
 		banned_users = await context.guild.bans()
