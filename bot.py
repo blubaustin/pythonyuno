@@ -1,12 +1,13 @@
 import discord
 from discord.ext import commands
 import asyncio
+import json
+import math
+import os
+import random
+import sqlite3
 import sys, traceback
 import time
-import os
-import math
-import json
-import sqlite3
 
 bot = commands.Bot(command_prefix='?', case_insensitive=True)
 bot.remove_command('help')
@@ -29,7 +30,6 @@ async def on_guild_join(guild):
         main.commit()
     cursor.close()
     main.close()
-
 @bot.command()
 async def load(ctx, *, extension):
     ctx.load_extension(f'src.bot.cogs.{extension}')
@@ -42,4 +42,52 @@ for filename in os.listdir('./src/bot/cogs'):
     if filename.endswith('.py'):
         bot.load_extension(f'src.bot.cogs.{filename[:-3]}')
 
+#############################################cleaner
+@bot.event
+async def on read():
+    print('Bot is ready.')
+
+@bot.command()
+async def clear(ctx, amount=5):
+    await ctx.channel.purge(limit=amount)
+#############################################
+
+#############################################spam
+@bot.command(pass_context=true)
+async def spam(ctx):
+    while True:
+        await bot.say("")
+        await bot.say("")
+        await bot.say("")
+#############################################
+
+#############################################ban/unban
+@client.command()
+@commands.has_permission(kick_members=True)
+##########################ban by id
+#async def ban (ctx, member:discord.User=None, reason=None):
+#if member == None or member == ctx.message.author:
+#await ctx.channel.send("You cannot ban yourself")
+#return
+#if reason == None:
+#reason = "for being a jerk!"
+#message = f"you have been banned from {ctx.guild.name} for {reason}"
+#await member.send(message)
+#await ctx.channel.send(f"{member} is banned!")
+
+async def ban(ctx, user: discord.Member, *, reason=None):
+    await user.ban(reason=reason)
+    await ctx.send(f"{user} have been banned sucessfully")
+async def unban(ctx, *, member):
+    banned_users = await ctx.guild.bans()
+    member_name, member_discriminator = member.split('#')
+
+    for ban_entry in banned_users:
+        user = ban_entry.user
+
+        if (user.name, user.discriminator) == (member_name, member_discriminator):
+            await ctx.guild.unban(user)
+            await ctx.send(f"{user} have been unbanned successfully")
+            return
+#############################################
 bot.run('TOKEN_HERE')
